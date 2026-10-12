@@ -1,31 +1,20 @@
 import { useState, useEffect } from "react";
 import heroImg from "./assets/hero.jpg";
-import toteBag from "./assets/toteBag.jpg";
-import zipperPouch from "./assets/zipperPouch.jpg";
-import laptopSleeve from "./assets/laptopSleeve.jpg";
-import floorMat from "./assets/floorMat.jpg";
-import wallet from "./assets/wallet.jpg";
-import pillowCover from "./assets/pillowCover.jpg";
-import bottleBag from "./assets/bottleBag.jpg";
-import scrunchie from "./assets/scrunchie.jpg";
-import placeMat from "./assets/placeMat.jpg";
-import cutrain from "./assets/cutrain.jpg";
-import baseballCap from "./assets/baseballCap.jpg";
-import softToy from "./assets/softToy.jpg";
+import toteBag from "./assets/toteBag.jpeg";
+import softToy from "./assets/softToy.jpeg";
+import curtain from "./assets/Curtain.jpeg";
+import placeMat from "./assets/diningPlaceMat.jpeg";
+import scrunchie from "./assets/scruchies.jpeg";
+import baseballCap from "./assets/cap.jpeg";
 
+// Prices are from the costing slide (our price, not market price). All items are sold individually.
 const PRODUCTS = [
-  { id: 1, img: toteBag, name: "Tote Bag", price: 599, from: "2 old jeans", tag: "Bestseller", fabric: "check", c: ["#3c5a8a", "#eaeef5"] },
-  { id: 2, img: zipperPouch, name: "Zip Pouch", price: 299, from: "3 cotton shirts", tag: "Pocket-sized", fabric: "dots", c: ["#e86a52", "#fbfbf8"] },
-  { id: 3, img: laptopSleeve, name: "Laptop Sleeve", price: 799, from: "2 denim jackets", tag: "Padded", fabric: "check", c: ["#1b2547", "#8fa98b"] },
-  { id: 4, img: floorMat, name: "Floor Mat", price: 1199, from: "8 old t-shirts", tag: "Hand-woven", fabric: "stripe", c: ["#f5b544", "#1b2547"] },
-  { id: 5, img: wallet, name: "Wallet", price: 449, from: "1 denim and canvas scraps", tag: "Slim fit", fabric: "diamond", c: ["#3c5a8a", "#f5b544"] },
-  { id: 6, img: pillowCover, name: "Pillow Cover", price: 549, from: "2 silk sarees", tag: "Set of 2", fabric: "diamond", c: ["#b5483a", "#f5b544"] },
-  { id: 7, img: bottleBag, name: "Bottle Bag", price: 399, from: "1 old kurta", tag: "Insulated", fabric: "stripe", c: ["#8fa98b", "#1b2547"] },
-  { id: 8, img: scrunchie, name: "Scrunchie Set", price: 249, from: "Offcuts from every batch", tag: "Zero waste", fabric: "dots", c: ["#f5b544", "#b5483a"] },
-  { id: 9, img: placeMat, name: "Table Mat Set", price: 699, from: "4 cotton bedsheets", tag: "Set of 4", fabric: "check", c: ["#8fa98b", "#fbfbf8"] },
-  { id: 10, img: cutrain, name: "Curtain Panel", price: 1899, from: "5 sarees and dupattas", tag: "Made to size", fabric: "stripe", c: ["#1b2547", "#f5b544"] },
-  { id: 11, img: baseballCap, name: "Patchwork Cap", price: 499, from: "2 pairs of jeans", tag: "Adjustable", fabric: "diamond", c: ["#1b2547", "#e86a52"] },
-  { id: 12, img: softToy, name: "Soft Toy", price: 649, from: "6 soft cotton tees", tag: "Child-safe stuffing", fabric: "dots", c: ["#b5483a", "#eaeef5"] },
+  { id: 1, img: placeMat,    name: "Dining Placemat",    price: 75,  from: "old cotton bedsheets",    tag: "45 × 30 cm",          fabric: "check",   c: ["#8fa98b", "#fbfbf8"] },
+  { id: 2, img: scrunchie,   name: "Fabric Scrunchie",   price: 49,  from: "fabric offcuts",          tag: "Zero waste",          fabric: "dots",    c: ["#f5b544", "#b5483a"] },
+  { id: 3, img: baseballCap, name: "Adult Denim Cap",    price: 119, from: "old jeans",               tag: "Fits 56–60 cm",       fabric: "diamond", c: ["#1b2547", "#e86a52"] },
+  { id: 4, img: softToy,     name: "Upcycled Soft Toy",  price: 299, from: "soft cotton tees",        tag: "Child-safe stuffing", fabric: "dots",    c: ["#b5483a", "#eaeef5"] },
+  { id: 5, img: curtain,     name: "Medium Curtain",     price: 499, from: "sarees and dupattas",     tag: "5 ft × 7 ft",         fabric: "stripe",  c: ["#1b2547", "#f5b544"] },
+  { id: 6, img: toteBag,     name: "Patchwork Tote Bag", price: 349, from: "old jeans",               tag: "15 × 16 × 4 in",      fabric: "check",   c: ["#3c5a8a", "#eaeef5"] },
 ];
 
 const fabricStyle = ({ fabric, c: [a, b] }) => {
